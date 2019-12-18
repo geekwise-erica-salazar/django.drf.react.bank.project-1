@@ -26,3 +26,14 @@ class Customer(models.Model):
 
     def _str_(self):
         return(f"Customer Name {self.customer_name}")
+
+
+class Product(models.Model):
+    product_options = (
+        ('checking', 'CHECKING'),
+        ('saving', 'SAVING'),
+        ('credit', 'CREDIT'),
+    )
+
+    product_options = models.CharField(max_length=40)
+    product_options = models.CharField(max_length=8)
