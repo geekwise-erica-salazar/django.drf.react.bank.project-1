@@ -19,3 +19,10 @@ class Account(models.Model):
 
     def _str_(self):
         return(f"Account Name {self.username} Account Email {self.product_email}")
+
+
+class Customer(models.Model):
+    customer_name = models.CharField(max_length=200)
+
+    def _str_(self):
+        return(f"Customer Name {self.customer_name}")
