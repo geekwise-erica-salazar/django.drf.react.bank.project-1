@@ -26,7 +26,6 @@ SECRET_KEY = 'u))ku%nb#c%0-r&2rqj4*sh_#3-ixd6dw=nj33o*@ziutp9o7v'
 DEBUG = True
 
 # added 'vs-code-12-16-19.herokuapp.com' to work on heroku
-
 ALLOWED_HOSTS = [
     # 'vs-code-12-16-19.herokuapp.com'  
 ]
@@ -41,8 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'backend',
-    'bank',
+
 ]
 
 MIDDLEWARE = [
