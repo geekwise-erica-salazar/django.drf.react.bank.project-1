@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User, Group
+from bank.models import Account, Customer, Product
 from rest_framework import serializers
 
 

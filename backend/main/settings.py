@@ -27,9 +27,13 @@ DEBUG = True
 
 # added 'vs-code-12-16-19.herokuapp.com' to work on heroku
 ALLOWED_HOSTS = [
-    # 'vs-code-12-16-19.herokuapp.com'  
+    'vs-code-12-16-19.herokuapp.com'  
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 # Application definition
 
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 
     'bank',
 
