@@ -12,7 +12,7 @@ class Account(models.Model):
 
     username = models.CharField(max_length=100)
     email = models.CharField(max_length=200)
-    product_options = models.CharFeild(mac_length=9,
+    product_options = models.CharField(max_length=9,
     choices=account_options,
     default=account_options[0],
     )
