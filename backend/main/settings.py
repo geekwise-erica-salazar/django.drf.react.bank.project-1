@@ -27,7 +27,7 @@ DEBUG = True
 
 # added 'vs-code-12-16-19.herokuapp.com' to work on heroku
 ALLOWED_HOSTS = [
-    # 'vs-code-12-16-19.herokuapp.com'  
+    'vs-code-12-16-19.herokuapp.com'  
 ]
 
 
