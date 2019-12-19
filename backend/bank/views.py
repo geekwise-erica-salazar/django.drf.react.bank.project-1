@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from bank.models import Account, Customer, Product
+from bank.models import Branch, Account, Customer, Product
 from rest_framework import viewsets
-from .serializers import UserSerializer, GroupSerializer, AccountSerializer, CustomerSerializer, ProductSerializer
+from .serializers import UserSerializer, GroupSerializer, BranchSerializer, AccountSerializer, CustomerSerializer, ProductSerializer
 
 # Create your views here.
 
@@ -20,6 +20,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+#########
+class BranchViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Branch.objects.all()
+    serializer_class = BranchSerializer
 
 
 class AccountViewSet(viewsets.ModelViewSet):
