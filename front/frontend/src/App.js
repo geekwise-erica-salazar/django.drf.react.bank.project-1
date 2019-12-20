@@ -20,7 +20,8 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("http://localhost:8000/api/todos/")
+    
+      .get("https://front-vs-12-17-19.herokuapp.com/")
       .then(res => this.setState({ todoList: res.data }))
       .catch(err => console.log(err));
   };
@@ -91,17 +92,17 @@ class App extends Component {
     this.toggle();
     if (item.id) {
       axios
-        .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+        .put(`https://front-vs-12-17-19.herokuapp.com/${item.id}/`, item)
         .then(res => this.refreshList());
       return;
     }
     axios
-      .post("http://localhost:8000/api/todos/", item)
+      .post("https://front-vs-12-17-19.herokuapp.com/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
     axios
-      .delete(`http://localhost:8000/api/todos/${item.id}`)
+      .delete(`https://front-vs-12-17-19.herokuapp.com/${item.id}`)
       .then(res => this.refreshList());
   };
   createItem = () => {
