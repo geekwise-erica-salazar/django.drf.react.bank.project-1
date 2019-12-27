@@ -96,7 +96,7 @@ class App extends Component {
       return;
     }
     axios
-      .post("https://vs-code-12-16-19", item)
+      .post("https://vs-code-12-16-19.herokuapp.com/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
