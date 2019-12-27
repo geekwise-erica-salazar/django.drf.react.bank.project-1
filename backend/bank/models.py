@@ -30,6 +30,7 @@ class Account(models.Model):
 
 class Customer(models.Model):
     customer_name = models.CharField(max_length=200)
+    
 
     def _str_(self):
         return(f"Customer Name {self.customer_name}")
