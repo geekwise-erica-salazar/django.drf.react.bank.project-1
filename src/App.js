@@ -104,7 +104,7 @@ class App extends Component {
       .then(res => this.refreshList());
   };
   createItem = () => {
-    const item = { title: "", description: "", completed: false };
+    const item = { branch_name: "", branch_location: "" };
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
   editItem = item => {
