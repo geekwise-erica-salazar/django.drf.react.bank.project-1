@@ -5,4 +5,4 @@ env/
 venv/ 
 ## gitpod
 .theia
-node_modules
+/node_modules
