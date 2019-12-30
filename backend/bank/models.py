@@ -10,7 +10,7 @@ class Branch(models.Model):
         return(f" Bank Name {self.branch_name} Branch Location {self.branch_location}")
 
 
-class Account(models.Model):
+# class Account(models.Model):
     account_options = (
         ('account', 'ACCOUNT'),
         ('checking', 'CHECKING'),
