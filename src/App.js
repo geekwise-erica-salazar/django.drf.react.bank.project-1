@@ -50,7 +50,7 @@ class App extends Component {
   };
   renderItems = () => {
     const { viewCompleted } = this.state;
-    const newItems = this.state.bankApp(
+    const newItems = this.state.todoList.filter(
       item => item.completed === viewCompleted
     );
     return newItems.map(item => (
