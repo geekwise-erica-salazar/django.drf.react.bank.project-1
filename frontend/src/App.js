@@ -19,7 +19,7 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("https://vs-code-12-16-19.herokuapp.com/branch/")
+      .get("https://vs-code-12-16-19.herokuapp.com/")
       .then(res => this.setState({ todoList: res.data }))
       .catch(err => console.log(err));
   };
@@ -90,17 +90,17 @@ class App extends Component {
     this.toggle();
     if (item.id) {
       axios
-        .put(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}/`, item)
+        .put(`https://vs-code-12-16-19.herokuapp.com/${item.id}/`, item)
         .then(res => this.refreshList());
       return;
     }
     axios
-      .post("https://vs-code-12-16-19.herokuapp.com/branch/", item)
+      .post("https://vs-code-12-16-19.herokuapp.com/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
     axios
-      .delete(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}`)
+      .delete(`https://vs-code-12-16-19.herokuapp.com/${item.id}`)
       .then(res => this.refreshList());
   };
   createItem = () => {
