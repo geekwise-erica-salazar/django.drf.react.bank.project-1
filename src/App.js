@@ -32,22 +32,34 @@ class App extends Component {
   };
   renderTabList = () => {
     return (
-      <div className="my-5 tab-list">
+        <div className="my-5 tab-list">
         <span
-          onClick={() => this.displayCompleted(true)}
-          className={this.state.viewCompleted ? "active" : ""}
+            onClick={() => this.displayCustomer(true)}
+            className={this.state.viewCompleted ? "active" : ""}
         >
-          complete
+            Branch
         </span>
         <span
-          onClick={() => this.displayCompleted(false)}
-          className={this.state.viewCompleted ? "" : "active"}
+            onClick={() => this.displayCustomer(false)}
+            className={this.state.viewCompleted ? "" : "active" }
         >
-          Incomplete
+            Customer
         </span>
-      </div>
+        <span
+            onClick={() => this.displayCustomer(false)}
+            className={this.state.viewCompleted ? "" : "active"}
+        >
+            Products
+        </span>
+        <span
+            onClick={() => this.displayCustomer(false)}
+            className={this.state.viewCompleted ? "" : "active"} 
+        >
+            Account
+        </span>
+        </div>
     );
-  };
+    };
   renderItems = () => {
     const { viewCompleted } = this.state;
     const newItems = this.state.todoList.filter(
