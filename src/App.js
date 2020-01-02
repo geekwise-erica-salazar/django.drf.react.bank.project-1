@@ -1,3 +1,4 @@
+// .get("https://vs-code-12-16-19.herokuapp.com/branch/")
 import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
@@ -20,7 +21,7 @@ class App extends Component {
   refreshList = () => {
     axios
       .get("https://vs-code-12-16-19.herokuapp.com/branch/")
-      .then(res => this.setState({ todoList: res.data }))
+      .then(res => this.setState({ bankApp: res.data }))
       .catch(err => console.log(err));
   };
   displayCompleted = status => {
@@ -49,7 +50,7 @@ class App extends Component {
   };
   renderItems = () => {
     const { viewCompleted } = this.state;
-    const newItems = this.state.todoList.filter(
+    const newItems = this.state.bankApp.filter(
       item => item.completed === viewCompleted
     );
     return newItems.map(item => (
