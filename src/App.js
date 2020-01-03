@@ -78,7 +78,7 @@ class App extends Component {
           }`}
           title={item.branch_name}
         >
-          {item.title}
+          {item.branch_name}
         </span>
         <span>
           <button
