@@ -10,6 +10,7 @@ class App extends Component {
       activeItem: {
         branch_name: '',
         branch_location: '',
+        completed: false
       },
       bankApp: []
     };
