@@ -20,7 +20,7 @@ class App extends Component {
   }
   refreshList = () => {
     axios
-      .get("https://vs-code-12-16-19.herokuapp.com/branch/")
+      .get("http://127.0.0.1:8000/branch/")
       .then(res => this.setState({ bankApp: res.data.results }))
       .catch(err => console.log(err));
   };
@@ -105,17 +105,17 @@ class App extends Component {
     this.toggle();
     if (item.id) {
       axios
-        .put(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}/`, item)
+        .put(`http://127.0.0.1:8000/branch/${item.id}/`, item)
         .then(res => this.refreshList());
       return;
     }
     axios
-      .post("https://vs-code-12-16-19.herokuapp.com/branch/", item)
+      .post("http://127.0.0.1:8000/branch/", item)
       .then(res => this.refreshList());
   };
   handleDelete = item => {
     axios
-      .delete(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}`)
+      .delete(`http://127.0.0.1:8000/branch/${item.id}`)
       .then(res => this.refreshList());
   };
   createItem = () => {
