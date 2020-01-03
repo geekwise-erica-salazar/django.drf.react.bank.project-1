@@ -15,66 +15,63 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    this.refreshList();
-  }
-  refreshList = () => {
     axios
       .get("https://vs-code-12-16-19.herokuapp.com/branch/")
-      .then(res => this.setState({ bankApp: res.data.results}))
+      .then(res => this.setState({ bankApp: res.data }))
       .catch(err => console.log(err));
-  };
-  displayCompleted = status => {
-    if (status) {
-      return this.setState({ viewCompleted: true });
-    }
-    return this.setState({ viewCompleted: false });
-  };
-  renderTabList = () => {
-    return (
-        <div className="my-5 tab-list">
-        <span
-            onClick={() => this.displayCustomer(true)}
-            className={this.state.viewCompleted ? "active" : ""}
-        >
-            Branch
+  }
+}
+handleSubmit() {
+  axios
+    .post("https://vs-code-12-16-19.herokuapp.com/branch/")
+    .then(res => this.componentDidMount());
+}
+renderTabList = () => {
+  return (
+    <div className="my-5 tab-list">
+      <span
+        onClick={() => this.displayBranch(true)}
+
+      >
+        Branch
         </span>
-        <span
-            onClick={() => this.displayCustomer(false)}
-            className={this.state.viewCompleted ? "" : "active" }
-        >
-            Customer
+      <span
+        onClick={() => this.displayCustomer(false)}
+
+      >
+        Customer
         </span>
-        <span
-            onClick={() => this.displayCustomer(false)}
-            className={this.state.viewCompleted ? "" : "active"}
-        >
-            Products
+      <span
+        onClick={() => this.displayProducts(false)}
+
+      >
+        Products
         </span>
-        <span
-            onClick={() => this.displayCustomer(false)}
-            className={this.state.viewCompleted ? "" : "active"} 
-        >
-            Account
+      <span
+        onClick={() => this.displayAccount(false)}
+
+      >
+        Account
         </span>
-        </div>
-    );
-    };
-  renderItems = () => {
-    // const { viewCompleted } = this.state;
-    // const newItems = this.state.todoList.filter(
-    //   item => item.completed === viewCompleted
-    // );
-    const newItems=this.state.bankApp
-    
-    return newItems.map(item => (
+    </div>
+  );
+};
+renderItems = () => {
+  // const { viewCompleted } = this.state;
+  // const newItems = this.state.todoList.filter(
+  //   item => item.completed === viewCompleted
+  // );
+  let newItems = [];
+  newItems = this.state.bankApp
+
+  return newItems.map(item => (
+    <div key={item.id}>
       <li
         key={item.id}
         className="list-group-item d-flex justify-content-between align-items-center"
       >
         <span
-          className={`todo-title mr-2 ${
-            this.state.viewCompleted ? "completed-todo" : ""
-          }`}
+          className="todo-title mr-2"
           title={item.branch_name}
         >
           {item.branch_name}
@@ -95,63 +92,64 @@ class App extends Component {
           </button>
         </span>
       </li>
-    ));
-  };
-  toggle = () => {
-    this.setState({ modal: !this.state.modal });
-  };
-  handleSubmit = item => {
-    this.toggle();
-    if (item.id) {
-      axios
-        .put(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}/`, item)
-        .then(res => this.refreshList());
-      return;
-    }
+    </div>
+  ));
+};
+toggle = () => {
+  this.setState({ modal: !this.state.modal });
+};
+handleSubmit = item => {
+  this.toggle();
+  if (item.id) {
     axios
-      .post("https://vs-code-12-16-19.herokuapp.com/branch/", item)
+      .put(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}/`, item)
       .then(res => this.refreshList());
-  };
-  handleDelete = item => {
-    axios
-      .delete(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}`)
-      .then(res => this.refreshList());
-  };
-  createItem = () => {
-    const item = { branch_name: "", branch_location: "" };
-    this.setState({ activeItem: item, modal: !this.state.modal });
-  };
-  editItem = item => {
-    this.setState({ activeItem: item, modal: !this.state.modal });
-  };
-  render() {
-    return (
-      <main className="content">
-        <h1 className="text-white text-uppercase text-center my-4">Bank App</h1>
-        <div className="row ">
-          <div className="col-md-6 col-sm-10 mx-auto p-0">
-            <div className="card p-3">
-              <div className="">
-                <button onClick={this.createItem} className="btn btn-primary">
-                  Add Account
+    return;
+  }
+  axios
+    .post("https://vs-code-12-16-19.herokuapp.com/branch/", item)
+    .then(res => this.refreshList());
+};
+handleDelete = item => {
+  axios
+    .delete(`https://vs-code-12-16-19.herokuapp.com/branch/${item.id}`)
+    .then(res => this.refreshList());
+};
+createItem = () => {
+  const item = { branch_name: "", branch_location: "" };
+  this.setState({ activeItem: item, modal: !this.state.modal });
+};
+editItem = item => {
+  this.setState({ activeItem: item, modal: !this.state.modal });
+};
+render() {
+  return (
+    <main className="content">
+      <h1 className="text-white text-uppercase text-center my-4">Bank App</h1>
+      <div className="row ">
+        <div className="col-md-6 col-sm-10 mx-auto p-0">
+          <div className="card p-3">
+            <div className="">
+              <button onClick={this.createItem} className="btn btn-primary">
+                Add Account
                 </button>
-              </div>
-              {this.renderTabList()}
-              <ul className="list-group list-group-flush">
-                {this.renderItems()}
-              </ul>
             </div>
+            {this.renderTabList()}
+            <ul className="list-group list-group-flush">
+              {this.renderItems()}
+            </ul>
           </div>
         </div>
-        {this.state.modal ? (
-          <Modal
-            activeItem={this.state.activeItem}
-            toggle={this.toggle}
-            onSave={this.handleSubmit}
-          />
-        ) : null}
-      </main>
-    );
-  }
+      </div>
+      {this.state.modal ? (
+        <Modal
+          activeItem={this.state.activeItem}
+          toggle={this.toggle}
+          onSave={this.handleSubmit}
+        />
+      ) : null}
+    </main>
+  );
+}
 }
 export default App;
