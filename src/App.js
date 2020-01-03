@@ -65,6 +65,7 @@ class App extends Component {
     //   item => item.completed === viewCompleted
     // );
     const newItems=this.state.bankApp
+    console.log(newItems)
     return newItems.map(item => (
       <li
         key={item.id}
