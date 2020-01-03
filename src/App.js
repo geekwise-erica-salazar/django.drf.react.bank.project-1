@@ -62,7 +62,7 @@ class App extends Component {
     };
   renderItems = () => {
     // const { viewCompleted } = this.state;
-    // const newItems = this.state.todoList.filter(
+    // const newItems = this.state.bankApp.filter(
     //   item => item.completed === viewCompleted
     // );
     const newItems=this.state.bankApp
@@ -78,7 +78,7 @@ class App extends Component {
           }`}
           title={item.branch_name}
         >
-          {item.branch_name}
+          {item.title}
         </span>
         <span>
           <button
