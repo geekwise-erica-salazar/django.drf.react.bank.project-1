@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+
+    import React, { Component } from "react";
     import Modal from "./components/Modal";
     import axios from "axios";
 
@@ -6,11 +7,10 @@ import React, { Component } from "react";
       constructor(props) {
         super(props);
         this.state = {
-          viewCompleted: false,
+          viewCompleted: true,
           activeItem: {
-            title: "",
-            description: "",
-            completed: false
+            branch_name: "",
+            branch_location: "",
           },
           todoList: []
         };
@@ -20,15 +20,15 @@ import React, { Component } from "react";
       }
       refreshList = () => {
         axios
-          .get("http://localhost:8000/api/todos/")
-          .then(res => this.setState({ todoList: res.data }))
+          .get("http://127.0.0.1:8000/branch/")
+          .then(res => this.setState({ todoList: res.data.results }))
           .catch(err => console.log(err));
       };
       displayCompleted = status => {
         if (status) {
           return this.setState({ viewCompleted: true });
         }
-        return this.setState({ viewCompleted: false });
+        return this.setState({ viewCompleted: true });
       };
       renderTabList = () => {
         return (
@@ -37,22 +37,14 @@ import React, { Component } from "react";
               onClick={() => this.displayCompleted(true)}
               className={this.state.viewCompleted ? "active" : ""}
             >
-              complete
+              Branch
             </span>
-            <span
-              onClick={() => this.displayCompleted(false)}
-              className={this.state.viewCompleted ? "" : "active"}
-            >
-              Incomplete
-            </span>
+           
           </div>
         );
       };
       renderItems = () => {
-        const { viewCompleted } = this.state;
-        const newItems = this.state.todoList.filter(
-          item => item.completed === viewCompleted
-        );
+        const newItems=this.state.todoList
         return newItems.map(item => (
           <li
             key={item.id}
@@ -62,7 +54,7 @@ import React, { Component } from "react";
               className={`todo-title mr-2 ${
                 this.state.viewCompleted ? "completed-todo" : ""
               }`}
-              title={item.description}
+              title={item.branch_name}
             >
               {item.title}
             </span>
@@ -91,21 +83,21 @@ import React, { Component } from "react";
         this.toggle();
         if (item.id) {
           axios
-            .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+            .put(`http://127.0.0.1:8000/branch/${item.id}/`, item)
             .then(res => this.refreshList());
           return;
         }
         axios
-          .post("http://localhost:8000/api/todos/", item)
+          .post("http://127.0.0.1:8000/branch/", item)
           .then(res => this.refreshList());
       };
       handleDelete = item => {
         axios
-          .delete(`http://localhost:8000/api/todos/${item.id}`)
+          .delete(`http://127.0.0.1:8000/branch/${item.id}`)
           .then(res => this.refreshList());
       };
       createItem = () => {
-        const item = { title: "", description: "", completed: false };
+        const item = { branch_name: "", branch_location: "" };
         this.setState({ activeItem: item, modal: !this.state.modal });
       };
       editItem = item => {
@@ -114,7 +106,7 @@ import React, { Component } from "react";
       render() {
         return (
           <main className="content">
-            <h1 className="text-white text-uppercase text-center my-4">Todo app</h1>
+            <h1 className="text-white text-uppercase text-center my-4">JAG BANK APP</h1>
             <div className="row ">
               <div className="col-md-6 col-sm-10 mx-auto p-0">
                 <div className="card p-3">
