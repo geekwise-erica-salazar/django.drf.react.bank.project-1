@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
@@ -6,10 +7,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewCompleted: true,
+      viewCompleted: false,
       activeItem: {
         branch_name: '',
-        branch_location: ''
+        branch_location: '',
+        completed: false
       },
       bankApp: []
     };
@@ -33,37 +35,39 @@ class App extends Component {
     return (
         <div className="my-5 tab-list">
         <span
-            // onClick={() => this.displayBranch(true)}
-            // className={this.state.viewCompleted ? "active" : ""}
-            className="active"
+            onClick={() => this.displayCustomer(true)}
+            className={this.state.viewCompleted ? "active" : ""}
         >
             Branch
         </span>
-
-        {/* for now untill other buttion are ready to work on */}
-        {/* <span
+        <span
             onClick={() => this.displayCustomer(false)}
             className={this.state.viewCompleted ? "" : "active" }
         >
             Customer
         </span>
         <span
-            onClick={() => this.displayProduct(false)}
+            onClick={() => this.displayCustomer(false)}
             className={this.state.viewCompleted ? "" : "active"}
         >
-            Product
+            Products
         </span>
         <span
-            onClick={() => this.displayAccount(false)}
+            onClick={() => this.displayCustomer(false)}
             className={this.state.viewCompleted ? "" : "active"} 
         >
             Account
-        </span> */}
+        </span>
         </div>
     );
     };
   renderItems = () => {
+    // const { viewCompleted } = this.state;
+    // const newItems = this.state.bankApp.filter(
+    //   item => item.completed === viewCompleted
+    // );
     const newItems=this.state.bankApp
+    console.log(newItems)
     return newItems.map(item => (
       <li
         key={item.id}
