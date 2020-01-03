@@ -3,7 +3,8 @@
 # JAG BANK APP
 Bank App is for making CRUD function between the User and Database. You be able to create accounts, branches and you can edit or delete from your browser and database.
 
-[BackEnd](https://vs-code-12-16-19.herokuapp.com/)
+[BackEnd](https://vs-code-12-16-19.herokuapp.com/),
+
 [FrontEnd](https://front-vs-12-17-19.herokuapp.com/)
 ## Installation 
 In order to run this app you need to install Django to interact with your database tables and install React to build a user interface. You can follow the instruction below to get this started.
