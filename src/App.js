@@ -6,11 +6,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewCompleted: false,
+      viewCompleted: true,
       activeItem: {
         branch_name: '',
-        branch_location: '',
-        completed: false
+        branch_location: ''
       },
       bankApp: []
     };
@@ -34,12 +33,15 @@ class App extends Component {
     return (
         <div className="my-5 tab-list">
         <span
-            onClick={() => this.displayBranch(true)}
-            className={this.state.viewCompleted ? "active" : ""}
+            // onClick={() => this.displayBranch(true)}
+            // className={this.state.viewCompleted ? "active" : ""}
+            className="active"
         >
             Branch
         </span>
-        <span
+
+        {/* for now untill other buttion are ready to work on */}
+        {/* <span
             onClick={() => this.displayCustomer(false)}
             className={this.state.viewCompleted ? "" : "active" }
         >
@@ -56,17 +58,12 @@ class App extends Component {
             className={this.state.viewCompleted ? "" : "active"} 
         >
             Account
-        </span>
+        </span> */}
         </div>
     );
     };
   renderItems = () => {
-    // const { viewCompleted } = this.state;
-    // const newItems = this.state.bankApp.filter(
-    //   item => item.completed === viewCompleted
-    // );
     const newItems=this.state.bankApp
-    console.log(newItems)
     return newItems.map(item => (
       <li
         key={item.id}
