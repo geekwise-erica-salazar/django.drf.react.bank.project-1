@@ -1,4 +1,3 @@
-// .get("https://vs-code-12-16-19.herokuapp.com/branch/")
 import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
@@ -12,7 +11,7 @@ class App extends Component {
         branch_name: '',
         branch_location: '',
       },
-      todoList: []
+      bankApp: []
     };
   }
   componentDidMount() {
@@ -61,10 +60,11 @@ class App extends Component {
     );
     };
   renderItems = () => {
-    const { viewCompleted } = this.state;
-    const newItems = this.state.todoList.filter(
-      item => item.completed === viewCompleted
-    );
+    // const { viewCompleted } = this.state;
+    // const newItems = this.state.todoList.filter(
+    //   item => item.completed === viewCompleted
+    // );
+    const newItems=this.state.bankApp;
     return newItems.map(item => (
       <li
         key={item.id}
@@ -74,9 +74,9 @@ class App extends Component {
           className={`todo-title mr-2 ${
             this.state.viewCompleted ? "completed-todo" : ""
           }`}
-          title={item.description}
+          title={item.branch_name}
         >
-          {item.title}
+          {item.branch_name}
         </span>
         <span>
           <button
