@@ -34,7 +34,7 @@ class App extends Component {
     return (
         <div className="my-5 tab-list">
         <span
-            onClick={() => this.displayCustomer(true)}
+            onClick={() => this.displayBranch(true)}
             className={this.state.viewCompleted ? "active" : ""}
         >
             Branch
@@ -46,13 +46,13 @@ class App extends Component {
             Customer
         </span>
         <span
-            onClick={() => this.displayCustomer(false)}
+            onClick={() => this.displayProduct(false)}
             className={this.state.viewCompleted ? "" : "active"}
         >
-            Products
+            Product
         </span>
         <span
-            onClick={() => this.displayCustomer(false)}
+            onClick={() => this.displayAccount(false)}
             className={this.state.viewCompleted ? "" : "active"} 
         >
             Account
