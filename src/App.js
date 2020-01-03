@@ -65,7 +65,7 @@ class App extends Component {
     //   item => item.completed === viewCompleted
     // );
     const newItems=this.state.bankApp
-        return newItems.results.map(item => (
+    return newItems.map(item => (
       <li
         key={item.id}
         className="list-group-item d-flex justify-content-between align-items-center"
