@@ -20,7 +20,7 @@ class App extends Component {
   refreshList = () => {
     axios
       .get("https://vs-code-12-16-19.herokuapp.com/branch/")
-      .then(res => this.setState({ bankApp: res.data}))
+      .then(res => this.setState({ bankApp: res.data.results}))
       .catch(err => console.log(err));
   };
   displayCompleted = status => {
@@ -65,7 +65,8 @@ class App extends Component {
     //   item => item.completed === viewCompleted
     // );
     const newItems=this.state.bankApp
-    return data.newItems.map(item => (
+    
+    return newItems.map(item => (
       <li
         key={item.id}
         className="list-group-item d-flex justify-content-between align-items-center"
