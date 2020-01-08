@@ -3,6 +3,18 @@ from bank.models import Branch, Account, Customer, Product
 from rest_framework import serializers
 
 
+# class leadViewSet(viewSet.ModelsViewSet):
+#     permission_classes = [
+#         permissions.IsAuthenticated
+#     ]
+
+#     serializers_class = LeadSerializer
+
+#     def get_queryset(self):
+#         return self.request.user.leads.all()
+    
+#     def perform_create(self, serializers)
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
@@ -13,6 +25,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['id', 'url', 'name']
+    
 
 #########
 class BranchSerializer(serializers.HyperlinkedModelSerializer):
@@ -20,8 +33,8 @@ class BranchSerializer(serializers.HyperlinkedModelSerializer):
         model = Branch
         fields = ['id', 'branch_name', 'branch_location']
 
-
-
+    
+# ########
 class AccountSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Account

@@ -1,10 +1,12 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
+
 
 class Branch(models.Model):
     branch_name = models.CharField(max_length=100)
     branch_location = models.CharField(max_length=200)
+    owner = models.ForeignKey(User, related_name="Branch", on_delete=models.CASCADE, null=True)
 
     def _str_(self):
         return(f" Bank Name {self.branch_name} Branch Location {self.branch_location}")
