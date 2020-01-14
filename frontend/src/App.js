@@ -9,7 +9,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import { Provider } from 'react-redux';
 import store from "./store";
 import { loadUser } from './actions/auth';
-
+import AuthProvider from './context/AuthProvider'
 
 
 class App extends Component {
@@ -19,6 +19,7 @@ class App extends Component {
 
   render(){
     return(
+      <AuthProvider>
       <Provider store={store}>
       <Router>
         <Header/>
@@ -29,6 +30,7 @@ class App extends Component {
         </Switch>
     </Router>
     </Provider>
+    </AuthProvider>
     );
   }
 }

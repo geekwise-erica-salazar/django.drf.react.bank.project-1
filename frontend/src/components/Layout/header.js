@@ -3,14 +3,23 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import {AuthContext} from '../../context/AuthProvider';
+
 
 export class Header extends Component {
+  static contextType = AuthContext
+
   static propTypes = {
     auth: PropTypes.object.isRequired,
     logout: PropTypes.func.isRequired
   };
   render() {
     const { isAuthenticated, user } = this.props.auth;
+    const { auth, dispatch } = this.context
+    // dispatch({
+    //   type: 'ADD_NAME'
+    // });
+
     const authLinks = (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
@@ -42,6 +51,7 @@ export class Header extends Component {
     );
     return (
         <nav className="navbar navbar-expand-sm navbar-light bg-light">
+          {this.context.auth[0]}
         <div className="container">
           <button
             className="navbar-toggler"
